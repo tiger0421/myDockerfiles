@@ -74,6 +74,7 @@ RUN useradd --create-home --home-dir /home/ubuntu --shell /bin/bash --user-group
 USER ubuntu
 WORKDIR /home/ubuntu
 
+RUN mkdir -p catkin_ws/src
 RUN echo source /opt/ros/melodic/setup.bash >> /home/ubuntu/.bashrc
 
 CMD /bin/bash

@@ -37,6 +37,34 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main"
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
 
+RUN apt update && \
+    apt install -y --no-install-recommends \
+        libsdl-image1.2-dev \
+        libsdl-dev \
+        ros-melodic-move-base-msgs \
+        ros-melodic-angles \
+        ros-melodic-urdf \
+        ros-melodic-urg-node \
+        ros-melodic-teleop-twist-joy \
+        ros-melodic-joystick-drivers \
+        ros-melodic-xacro \
+        ros-melodic-laser-geometry \
+        ros-melodic-map-msgs \
+        ros-melodic-diagnostic-updater \
+        ros-melodic-robot-state-publisher \
+        ros-melodic-tf2-sensor-msgs \
+        libyaml-cpp0.5v5 \
+        libyaml-cpp-dev \
+        python-catkin-tools \
+        python-rosdep \
+        python-rosinstall-generator \
+        python-wstool \
+        python-rosinstall
+    && \
+    apt-get clean  && \
+    apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/*
+
 ENV TZ=Asia/Tokyo 
 ENV LANG=ja_JP.UTF-8
 

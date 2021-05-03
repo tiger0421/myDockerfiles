@@ -15,6 +15,7 @@ RUN apt-get update && \
         g++ \
         fluid \
         build-essential \
+        git \
         vim \
         tmux \
     && \

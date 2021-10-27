@@ -1,0 +1,22 @@
+version: "3"
+services:
+  ros-vnc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ros-ign-desktop-vnc:melodic-arm
+    shm_size: '2gb'
+    container_name: ign
+    working_dir: /home/ubuntu
+    tty: true
+    environment:
+      - USERNAME=ubuntu
+      - PASSWORD=ubuntu
+      - RESOLUTION=1920x1080
+    ports:
+      - "8080:80"
+      - "5900:5900"
+    volumes:
+      - ~/share:/home/ubuntu/share:rw
+      - ~/workspace/intersection_recognition:/home/ubuntu/ws/src/intersection_recognition:rw
+

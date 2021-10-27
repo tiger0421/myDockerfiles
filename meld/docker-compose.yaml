@@ -1,0 +1,16 @@
+version: "3"
+services:
+  meld:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: meld
+    container_name: meld
+    working_dir: /root
+    tty: true
+    environment:
+      - DISPLAY=$DISPLAY_MAC
+    volumes:
+      - ~/share:/root/share:ro
+      - ~/workspace:/root/workspace:ro
+    command: /bin/bash -c "meld"

@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run --rm -it -e DISPLAY=$DISPLAY_MAC test:test xeyes
+docker run --name xeyes --rm -it -e DISPLAY=$DISPLAY_MAC xeyes xeyes

@@ -1,0 +1,22 @@
+version: "3"
+services:
+  ros-vnc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ros-vnc:noetic-arm
+    shm_size: '2gb'
+    container_name: ros-vnc
+    working_dir: /home/ubuntu
+    tty: true
+    environment:
+      - USER=ubuntu
+      - PASSWORD=ubuntu
+      - RESOLUTION=1920x1080
+    ports:
+      - "8081:80"
+      - "5901:5900"
+    volumes:
+      - ~/share:/home/ubuntu/share:rw
+    command: /bin/bash
+

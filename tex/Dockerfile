@@ -15,7 +15,7 @@ RUN apt-get update && \
     apt-get clean  && \
     rm -rf /var/lib/apt/lists/*
 
-ENV TZ=Asia/Tokyo 
+ENV TZ=Asia/Tokyo
 ENV LANG=ja_JP.UTF-8
 
 RUN tlmgr init-usertree

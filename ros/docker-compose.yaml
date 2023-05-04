@@ -1,0 +1,14 @@
+version: "3"
+services:
+  ros:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tiger0421/ros:noetic-arm
+    platform: linux/arm64/v8
+    container_name: ros
+    tty: true
+    volumes:
+      - ~/share:/root/share:rw
+    command: /bin/bash
+

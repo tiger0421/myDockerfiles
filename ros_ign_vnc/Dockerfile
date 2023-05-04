@@ -107,4 +107,11 @@ RUN apt update --quiet \
 RUN echo "source /preinstall/devel/setup.bash" >> /root/.bashrc
 RUN echo "source /preinstall/devel/setup.bash" >> /home/ubuntu/.bashrc
 
+RUN apt update --quiet \
+    && apt install --quiet --no-install-recommends -y \
+        ros-noetic-rosbridge-server \
+        vim \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
+
 CMD ["/bin/bash"]

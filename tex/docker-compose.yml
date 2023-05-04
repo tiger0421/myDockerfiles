@@ -1,0 +1,14 @@
+version: '2.4'
+services:
+  workspace:
+    image: busybox
+    volumes:
+      - ~/Documents/tex:/Documents/tex
+      - .latexmkrc:/home/ubuntu/.latexmkrc
+  builder:
+    build: .
+    container_name: mytex
+    tty: true
+    working_dir: /Documents/tex
+    volumes_from:
+      - workspace

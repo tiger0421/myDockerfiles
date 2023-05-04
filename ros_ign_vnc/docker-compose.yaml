@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ros-ign-desktop-vnc:melodic-arm
+    image: ros-ign-desktop-vnc:noetic-arm
     shm_size: '2gb'
     container_name: ign
     working_dir: /home/ubuntu
@@ -13,10 +13,32 @@ services:
       - USERNAME=ubuntu
       - PASSWORD=ubuntu
       - RESOLUTION=1920x1080
+      - ROS_HOSTNAME=ign
+      - ROS_MASTER_URI=http://ign:11311
+    networks:
+      - rosbridge
     ports:
       - "8080:80"
+      - "9090:9090"
       - "5900:5900"
     volumes:
       - ~/share:/home/ubuntu/share:rw
       - ~/workspace/intersection_recognition:/home/ubuntu/ws/src/intersection_recognition:rw
+      - ~/workspace/simply_diff_drive_simulator:/preinstall/src/simply_diff_drive_simulator:rw
+
+  webviz:
+    image: cruise/webviz
+    container_name: webviz
+    environment:
+      - ROS_HOSTNAME=webviz
+      - ROS_MASTER_URI=http://ign:11311
+    networks:
+      - rosbridge
+    ports:
+      - "8081:8080"
+
+networks:
+  rosbridge:
+    driver: bridge
+
 
